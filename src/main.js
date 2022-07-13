@@ -9,6 +9,7 @@ import '@/icons'
 import 'normalize.css'
 // 重置margin padding 清浮动 处理行内块元素 margin 2px的问题
 import '@/styles/reset.css'
+import './promission'
 Vue.use(ElementUI)
 Vue.config.productionTip = false
 

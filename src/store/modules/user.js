@@ -1,6 +1,6 @@
 // 模块化vuex
 import { Login } from '@/api/user'
-import { Message } from 'element-ui'
+// import { Message } from 'element-ui'
 import { setToken, getToken } from '@/utils/auth'
 const state = {
   // 防止刷新页面token没了
@@ -22,10 +22,13 @@ const actions = {
         // 数据持久化
         setToken(res.data.data)
       } else {
-        Message.error(res.data.message)
+        // Message.error(res.data.message)
+        // promise里面只有写promise.reject才算失败 否则算成功 会到then里面
+        return Promise.reject(new Error(res.data.message))
       }
     } catch (err) {
-      Message.error('登录失败')
+      // Message.error('登录失败')
+      return Promise.reject(new Error('登录失败，请重试'))
     }
   }
 }

@@ -83,11 +83,11 @@ export default {
         await this.$refs.loginFormRef.validate()
         console.log('校验成功')
         // 调用前面ajax数据
-        this.$store.dispatch('user/login', this.loginForm)
-        // this.$router.push('/home')
+        await this.$store.dispatch('user/login', this.loginForm)
+        this.$router.push('/home')
       } catch (err) {
         // console.log(err)
-        this.$message.error('校验失败')
+        this.$message.error(err.message)
       }
     }
   },
